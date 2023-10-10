@@ -148,9 +148,9 @@ public class ICOImage extends BMPImage
 	}
 
 	/**
-	 * The colour depth of the ICO image (bits per pixel).
+	 * The color depth of the ICO image (bits per pixel).
 	 * 
-	 * @return the colour depth, or <tt>-1</tt> if unknown.
+	 * @return the color depth, or <tt>-1</tt> if unknown.
 	 */
 	@Override
 	public int getColorDepth()
@@ -159,9 +159,9 @@ public class ICOImage extends BMPImage
 	}
 
 	/**
-	 * The number of possible colours for the ICO image.
+	 * The number of possible colors for the ICO image.
 	 * 
-	 * @return the number of colours, or <tt>-1</tt> if unknown.
+	 * @return the number of colors, or <tt>-1</tt> if unknown.
 	 */
 	@Override
 	public int getColorCount()
@@ -172,7 +172,7 @@ public class ICOImage extends BMPImage
 
 	/**
 	 * Specifies whether this ICO image is indexed, that is, the encoded bitmap
-	 * uses a colour table. If <tt>getColourDepth()</tt> returns <tt>-1</tt>,
+	 * uses a color table. If <tt>getColorDepth()</tt> returns <tt>-1</tt>,
 	 * the return value has no meaning.
 	 * 
 	 * @return <tt>true</tt> if indexed, <tt>false</tt> if not.

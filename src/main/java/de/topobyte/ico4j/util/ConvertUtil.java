@@ -16,7 +16,7 @@ import java.awt.image.DataBuffer;
 import java.awt.image.IndexColorModel;
 
 /**
- * Provides useful methods for converting images from one colour depth to
+ * Provides useful methods for converting images from one color depth to
  * another.
  * 
  * @author Ian McDonagh
@@ -25,11 +25,11 @@ public class ConvertUtil
 {
 
 	/**
-	 * Converts the source to 1-bit colour depth (monochrome). No transparency.
+	 * Converts the source to 1-bit color depth (monochrome). No transparency.
 	 * 
 	 * @param src
 	 *            the source image to convert
-	 * @return a copy of the source image with a 1-bit colour depth.
+	 * @return a copy of the source image with a 1-bit color depth.
 	 */
 	public static BufferedImage convert1(BufferedImage src)
 	{
@@ -51,7 +51,7 @@ public class ConvertUtil
 	}
 
 	/**
-	 * Converts the source image to 4-bit colour using the default 16-colour
+	 * Converts the source image to 4-bit color using the default 16-color
 	 * palette:
 	 * <ul>
 	 * <li>black</li>
@@ -75,8 +75,8 @@ public class ConvertUtil
 	 * 
 	 * @param src
 	 *            the source image to convert
-	 * @return a copy of the source image with a 4-bit colour depth, with the
-	 *         default colour pallette
+	 * @return a copy of the source image with a 4-bit color depth, with the
+	 *         default color pallette
 	 */
 	public static BufferedImage convert4(BufferedImage src)
 	{
@@ -87,16 +87,16 @@ public class ConvertUtil
 	}
 
 	/**
-	 * Converts the source image to 4-bit colour using the given colour map. No
+	 * Converts the source image to 4-bit color using the given color map. No
 	 * transparency.
 	 * 
 	 * @param src
 	 *            the source image to convert
 	 * @param cmap
-	 *            the colour map, which should contain no more than 16 entries
+	 *            the color map, which should contain no more than 16 entries
 	 *            The entries are in the form RRGGBB (hex).
-	 * @return a copy of the source image with a 4-bit colour depth, with the
-	 *         custom colour pallette
+	 * @return a copy of the source image with a 4-bit color depth, with the
+	 *         custom color pallette
 	 */
 	public static BufferedImage convert4(BufferedImage src, int[] cmap)
 	{
@@ -113,12 +113,12 @@ public class ConvertUtil
 	}
 
 	/**
-	 * Converts the source image to 8-bit colour using the default 256-colour
+	 * Converts the source image to 8-bit color using the default 256-color
 	 * palette. No transparency.
 	 * 
 	 * @param src
 	 *            the source image to convert
-	 * @return a copy of the source image with an 8-bit colour depth
+	 * @return a copy of the source image with an 8-bit color depth
 	 */
 	public static BufferedImage convert8(BufferedImage src)
 	{
@@ -132,11 +132,11 @@ public class ConvertUtil
 	}
 
 	/**
-	 * Converts the source image to 24-bit colour (RGB). No transparency.
+	 * Converts the source image to 24-bit color (RGB). No transparency.
 	 * 
 	 * @param src
 	 *            the source image to convert
-	 * @return a copy of the source image with a 24-bit colour depth
+	 * @return a copy of the source image with a 24-bit color depth
 	 */
 	public static BufferedImage convert24(BufferedImage src)
 	{
@@ -150,11 +150,11 @@ public class ConvertUtil
 	}
 
 	/**
-	 * Converts the source image to 32-bit colour with transparency (ARGB).
+	 * Converts the source image to 32-bit color with transparency (ARGB).
 	 * 
 	 * @param src
 	 *            the source image to convert
-	 * @return a copy of the source image with a 32-bit colour depth.
+	 * @return a copy of the source image with a 32-bit color depth.
 	 */
 	public static BufferedImage convert32(BufferedImage src)
 	{

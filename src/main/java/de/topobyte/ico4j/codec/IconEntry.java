@@ -25,8 +25,8 @@ public class IconEntry
 	 */
 	public int bHeight;
 	/**
-	 * The number of colours, calculated from {@link #sBitCount sBitCount}.
-	 * <tt>0</tt> specifies a colour count of &gt;= 256.
+	 * The number of colors, calculated from {@link #sBitCount sBitCount}.
+	 * <tt>0</tt> specifies a color count of &gt;= 256.
 	 */
 	public int bColorCount;
 	/**
@@ -38,7 +38,7 @@ public class IconEntry
 	 */
 	public short sPlanes;
 	/**
-	 * Colour depth in bits per pixel.
+	 * Color depth in bits per pixel.
 	 */
 	public short sBitCount;
 	/**

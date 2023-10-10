@@ -60,7 +60,7 @@ public class Test
 				int width = img.getWidth();
 				int height = img.getHeight();
 				System.out.println("    # " + i + ": size=" + width + "x"
-						+ height + "; colour depth=" + bpp + " bpp");
+						+ height + "; color depth=" + bpp + " bpp");
 			}
 
 			// save images as separate BMP and PNG files

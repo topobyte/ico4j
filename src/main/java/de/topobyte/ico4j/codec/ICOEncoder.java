@@ -47,7 +47,7 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes a single image to file without colour depth
+	 * Encodes and writes a single image to file without color depth
 	 * conversion.
 	 * 
 	 * @param image
@@ -63,7 +63,7 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes a single image without colour depth conversion.
+	 * Encodes and writes a single image without color depth conversion.
 	 * 
 	 * @param image
 	 *            the source image to encode
@@ -79,7 +79,7 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes multiple images without colour depth conversion.
+	 * Encodes and writes multiple images without color depth conversion.
 	 * 
 	 * @param images
 	 *            the list of source images to be encoded
@@ -95,7 +95,7 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes multiple images to file without colour depth
+	 * Encodes and writes multiple images to file without color depth
 	 * conversion.
 	 * 
 	 * @param images
@@ -112,13 +112,13 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes multiple images to file with the colour depth
+	 * Encodes and writes multiple images to file with the color depth
 	 * conversion using the specified values.
 	 * 
 	 * @param images
 	 *            the list of source images to encode
 	 * @param bpp
-	 *            array containing desired colour depths for colour depth
+	 *            array containing desired color depths for color depth
 	 *            conversion
 	 * @param file
 	 *            the output file to which the encoded images will be written
@@ -142,9 +142,9 @@ public class ICOEncoder
 	 * @param bpp
 	 *            Array containing the color depth (bits per pixel) for encoding
 	 *            the corresponding image at each index in the <tt>images</tt>
-	 *            list. If the array is <tt>null</tt>, no colour depth
-	 *            conversion will be performed. A colour depth value of
-	 *            <tt>-1</tt> at a particular index indicates that no colour
+	 *            list. If the array is <tt>null</tt>, no color depth
+	 *            conversion will be performed. A color depth value of
+	 *            <tt>-1</tt> at a particular index indicates that no color
 	 *            depth conversion should be performed for that image.
 	 * @param compress
 	 *            Array containing the compression flag for the corresponding
@@ -165,14 +165,14 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes a single image to file with colour depth conversion
+	 * Encodes and writes a single image to file with color depth conversion
 	 * using the specified value.
 	 * 
 	 * @param image
 	 *            the source image to encode
 	 * @param bpp
-	 *            the colour depth (bits per pixel) for the colour depth
-	 *            conversion, or <tt>-1</tt> if no colour depth conversion
+	 *            the color depth (bits per pixel) for the color depth
+	 *            conversion, or <tt>-1</tt> if no color depth conversion
 	 *            should be performed
 	 * @param file
 	 *            the output file to which the encoded image will be written
@@ -203,8 +203,8 @@ public class ICOEncoder
 	 * @param image
 	 *            The image to encode.
 	 * @param bpp
-	 *            Colour depth (in bits per pixel) for the colour depth
-	 *            conversion, or <tt>-1</tt> if no colour depth conversion
+	 *            Color depth (in bits per pixel) for the color depth
+	 *            conversion, or <tt>-1</tt> if no color depth conversion
 	 *            should be performed.
 	 * @param os
 	 *            The output to which the encoded image will be written.
@@ -230,9 +230,9 @@ public class ICOEncoder
 	 * @param bpp
 	 *            Array containing the color depth (bits per pixel) for encoding
 	 *            the corresponding image at each index in the <tt>images</tt>
-	 *            list. If the array is <tt>null</tt>, no colour depth
-	 *            conversion will be performed. A colour depth value of
-	 *            <tt>-1</tt> at a particular index indicates that no colour
+	 *            list. If the array is <tt>null</tt>, no color depth
+	 *            conversion will be performed. A color depth value of
+	 *            <tt>-1</tt> at a particular index indicates that no color
 	 *            depth conversion should be performed for that image.
 	 * @param os
 	 *            The output to which the encoded images will be written.
@@ -256,9 +256,9 @@ public class ICOEncoder
 	 * @param bpp
 	 *            Array containing the color depth (bits per pixel) for encoding
 	 *            the corresponding image at each index in the <tt>images</tt>
-	 *            list. If the array is <tt>null</tt>, no colour depth
-	 *            conversion will be performed. A colour depth value of
-	 *            <tt>-1</tt> at a particular index indicates that no colour
+	 *            list. If the array is <tt>null</tt>, no color depth
+	 *            conversion will be performed. A color depth value of
+	 *            <tt>-1</tt> at a particular index indicates that no color
 	 *            depth conversion should be performed for that image.
 	 * @param compress
 	 *            Array containing the compression flag for the corresponding
@@ -548,14 +548,14 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Utility method, which converts the given image to the specified colour
+	 * Utility method, which converts the given image to the specified color
 	 * depth.
 	 * 
 	 * @param img
 	 *            the image to convert.
 	 * @param bpp
-	 *            the target colour depth (bits per pixel) for the conversion.
-	 * @return the given image converted to the specified colour depth.
+	 *            the target color depth (bits per pixel) for the conversion.
+	 * @return the given image converted to the specified color depth.
 	 */
 	public static BufferedImage convert(BufferedImage img, int bpp)
 	{

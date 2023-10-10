@@ -7,18 +7,17 @@
  * and open the template in the editor.
  */
 
-package net.sf.image4j.codec.ico;
+package de.topobyte.ico4j.codec;
 
 import java.awt.image.BufferedImage;
 
-import net.sf.image4j.codec.bmp.BMPImage;
-import net.sf.image4j.codec.bmp.InfoHeader;
+import de.topobyte.bmp4j.codec.BMPImage;
+import de.topobyte.bmp4j.codec.InfoHeader;
 
 /**
  * Contains a decoded ICO image, as well as information about the source encoded
  * ICO image.
  * 
- * @since 0.7
  * @author Ian McDonagh
  */
 public class ICOImage extends BMPImage
@@ -128,7 +127,6 @@ public class ICOImage extends BMPImage
 	 * The width of the ICO image in pixels.
 	 * 
 	 * @return the width of the ICO image, or <tt>-1</tt> if unknown
-	 * @since 0.7alpha2
 	 */
 	@Override
 	public int getWidth()
@@ -141,7 +139,6 @@ public class ICOImage extends BMPImage
 	 * The height of the ICO image in pixels.
 	 * 
 	 * @return the height of the ICO image, or <tt>-1</tt> if unknown.
-	 * @since 0.7alpha2
 	 */
 	@Override
 	public int getHeight()
@@ -154,10 +151,9 @@ public class ICOImage extends BMPImage
 	 * The colour depth of the ICO image (bits per pixel).
 	 * 
 	 * @return the colour depth, or <tt>-1</tt> if unknown.
-	 * @since 0.7alpha2
 	 */
 	@Override
-	public int getColourDepth()
+	public int getColorDepth()
 	{
 		return iconEntry == null ? -1 : iconEntry.sBitCount;
 	}
@@ -166,10 +162,9 @@ public class ICOImage extends BMPImage
 	 * The number of possible colours for the ICO image.
 	 * 
 	 * @return the number of colours, or <tt>-1</tt> if unknown.
-	 * @since 0.7alpha2
 	 */
 	@Override
-	public int getColourCount()
+	public int getColorCount()
 	{
 		int bpp = iconEntry.sBitCount == 32 ? 24 : iconEntry.sBitCount;
 		return bpp == -1 ? -1 : (int) (1 << bpp);
@@ -181,11 +176,11 @@ public class ICOImage extends BMPImage
 	 * the return value has no meaning.
 	 * 
 	 * @return <tt>true</tt> if indexed, <tt>false</tt> if not.
-	 * @since 0.7alpha2
 	 */
 	@Override
 	public boolean isIndexed()
 	{
 		return iconEntry == null ? false : iconEntry.sBitCount <= 8;
 	}
+
 }

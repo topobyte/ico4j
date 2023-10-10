@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.sf.image4j.codec.ico;
+package de.topobyte.ico4j.codec;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.IndexColorModel;
@@ -27,10 +27,11 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
 
-import net.sf.image4j.codec.bmp.BMPEncoder;
-import net.sf.image4j.codec.bmp.InfoHeader;
-import net.sf.image4j.io.LittleEndianOutputStream;
-import net.sf.image4j.util.ConvertUtil;
+import de.topobyte.bmp4j.codec.BMPEncoder;
+import de.topobyte.bmp4j.codec.InfoHeader;
+import de.topobyte.bmp4j.codec.InfoHeader3;
+import de.topobyte.bmp4j.io.LittleEndianOutputStream;
+import de.topobyte.ico4j.util.ConvertUtil;
 
 /**
  * Encodes images in ICO format.
@@ -156,7 +157,6 @@ public class ICOEncoder
 	 *            the file to which the encoded images will be written.
 	 * @throws IOException
 	 *             if an error occurred.
-	 * @since 0.6
 	 */
 	public static void write(List<BufferedImage> images, int[] bpp,
 			boolean[] compress, File file) throws IOException
@@ -271,7 +271,6 @@ public class ICOEncoder
 	 *            The output to which the encoded images will be written.
 	 * @throws IOException
 	 *             if an error occurred.
-	 * @since 0.6
 	 */
 	public static void write(List<BufferedImage> images, int[] bpp,
 			boolean[] compress, OutputStream os) throws IOException
@@ -305,7 +304,7 @@ public class ICOEncoder
 			BufferedImage imgc = b == -1 ? img : convert(img, b);
 			converted.add(imgc);
 			// create info header
-			InfoHeader ih = BMPEncoder.createInfoHeader(imgc);
+			InfoHeader3 ih = BMPEncoder.createInfoHeader3(imgc);
 			// create icon entry
 			IconEntry e = createIconEntry(ih);
 
@@ -343,7 +342,7 @@ public class ICOEncoder
 				InfoHeader ih = infoHeaders.get(i);
 				ih.write(out);
 				// color map
-				if (ih.sBitCount <= 8) {
+				if (ih.getBitCount() <= 8) {
 					IndexColorModel icm = (IndexColorModel) imgc
 							.getColorModel();
 					BMPEncoder.writeColorMap(icm, out);
@@ -403,23 +402,24 @@ public class ICOEncoder
 	{
 		IconEntry ret = new IconEntry();
 		// width 1
-		ret.bWidth = ih.iWidth == 256 ? 0 : ih.iWidth;
+		ret.bWidth = ih.getWidth() == 256 ? 0 : ih.getWidth();
 		// height 1
-		ret.bHeight = ih.iHeight == 256 ? 0 : ih.iHeight;
+		ret.bHeight = ih.getHeight() == 256 ? 0 : ih.getHeight();
 		// color count 1
-		ret.bColorCount = ih.iNumColors >= 256 ? 0 : ih.iNumColors;
+		ret.bColorCount = ih.getNumColors() >= 256 ? 0 : ih.getNumColors();
 		// reserved 1
 		ret.bReserved = 0;
 		// planes 2 = 1
 		ret.sPlanes = 1;
 		// bit count 2
-		ret.sBitCount = ih.sBitCount;
+		ret.sBitCount = ih.getBitCount();
 		// sizeInBytes 4 - size of infoHeader + xor bitmap + and bitbmap
-		int cmapSize = BMPEncoder.getColorMapSize(ih.sBitCount);
-		int xorSize = BMPEncoder.getBitmapSize(ih.iWidth, ih.iHeight,
-				ih.sBitCount);
-		int andSize = BMPEncoder.getBitmapSize(ih.iWidth, ih.iHeight, 1);
-		int size = ih.iSize + cmapSize + xorSize + andSize;
+		int cmapSize = BMPEncoder.getColorMapSize(ih.getBitCount());
+		int xorSize = BMPEncoder.getBitmapSize(ih.getWidth(), ih.getHeight(),
+				ih.getBitCount());
+		int andSize = BMPEncoder.getBitmapSize(ih.getWidth(), ih.getHeight(),
+				1);
+		int size = ih.getSize() + cmapSize + xorSize + andSize;
 		ret.iSizeInBytes = size;
 		// fileOffset 4
 		ret.iFileOffset = 0;
@@ -527,7 +527,7 @@ public class ICOEncoder
 			LittleEndianOutputStream out) throws IOException
 	{
 		Raster raster = img.getRaster();
-		switch (ih.sBitCount) {
+		switch (ih.getBitCount()) {
 		case 1:
 			BMPEncoder.write1(raster, out);
 			break;
@@ -590,9 +590,6 @@ public class ICOEncoder
 		return ret;
 	}
 
-	/**
-	 * @since 0.6
-	 */
 	private static ImageWriter getPNGImageWriter()
 	{
 		ImageWriter ret = null;
@@ -603,9 +600,6 @@ public class ICOEncoder
 		return ret;
 	}
 
-	/**
-	 * @since 0.6
-	 */
 	private static byte[] encodePNG(ImageWriter pngWriter, BufferedImage img)
 			throws IOException
 	{

@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.sf.image4j.util;
+package de.topobyte.ico4j.util;
 
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
@@ -166,4 +166,5 @@ public class ConvertUtil
 		cco.filter(src, dest);
 		return dest;
 	}
+
 }

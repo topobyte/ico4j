@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package net.sf.image4j.codec.ico;
+package de.topobyte.ico4j.codec;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
@@ -33,12 +33,12 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
-import net.sf.image4j.codec.bmp.BMPDecoder;
-import net.sf.image4j.codec.bmp.ColorEntry;
-import net.sf.image4j.codec.bmp.InfoHeader;
-import net.sf.image4j.io.CountingInputStream;
-import net.sf.image4j.io.EndianUtils;
-import net.sf.image4j.io.LittleEndianInputStream;
+import de.topobyte.bmp4j.codec.BMPDecoder;
+import de.topobyte.bmp4j.codec.ColorEntry;
+import de.topobyte.bmp4j.codec.InfoHeader3;
+import de.topobyte.bmp4j.io.CountingInputStream;
+import de.topobyte.bmp4j.io.EndianUtils;
+import de.topobyte.bmp4j.io.LittleEndianInputStream;
 
 /**
  * Decodes images in ICO format.
@@ -96,7 +96,6 @@ public class ICODecoder
 	 * @return the list of images decoded from the ICO data
 	 * @throws IOException
 	 *             if an error occurs
-	 * @since 0.7
 	 */
 	public static List<ICOImage> readExt(File file) throws IOException
 	{
@@ -159,7 +158,6 @@ public class ICODecoder
 	 * @return the list of images decoded from the ICO data
 	 * @throws IOException
 	 *             if an error occurs
-	 * @since 0.7
 	 */
 	public static List<ICOImage> readExt(InputStream is) throws IOException
 	{
@@ -199,13 +197,13 @@ public class ICODecoder
 				log.log(Level.FINE, "Image #" + i + " @ " + in.getCount()
 						+ " info = " + EndianUtils.toInfoString(info));
 				if (info == 40) {
-
 					// read XOR bitmap
 					// BMPDecoder bmp = new BMPDecoder(is);
-					InfoHeader infoHeader = BMPDecoder.readInfoHeader(in, info);
-					InfoHeader andHeader = new InfoHeader(infoHeader);
+					InfoHeader3 infoHeader = (InfoHeader3) BMPDecoder
+							.readInfoHeader(in, info);
+					InfoHeader3 andHeader = new InfoHeader3(infoHeader);
 					andHeader.iHeight = infoHeader.iHeight / 2;
-					InfoHeader xorHeader = new InfoHeader(infoHeader);
+					InfoHeader3 xorHeader = new InfoHeader3(infoHeader);
 					xorHeader.iHeight = andHeader.iHeight;
 
 					andHeader.sBitCount = 1;
@@ -394,4 +392,5 @@ public class ICODecoder
 		}
 		return ret;
 	}
+
 }

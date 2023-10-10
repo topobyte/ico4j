@@ -17,10 +17,10 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import net.sf.image4j.codec.bmp.BMPDecoder;
-import net.sf.image4j.codec.bmp.BMPEncoder;
-import net.sf.image4j.codec.ico.ICODecoder;
-import net.sf.image4j.codec.ico.ICOEncoder;
+import de.topobyte.bmp4j.codec.BMPDecoder;
+import de.topobyte.bmp4j.codec.BMPEncoder;
+import de.topobyte.ico4j.codec.ICODecoder;
+import de.topobyte.ico4j.codec.ICOEncoder;
 
 /**
  *
@@ -31,7 +31,6 @@ public class Test
 
 	public static void main(String[] args)
 	{
-
 		// input and output file names
 
 		String strInFile = "input.ico";
@@ -51,7 +50,7 @@ public class Test
 
 			System.out.println("ICO decoding...OK");
 
-			// display summary of decoded images
+			// display summary of decoded image s
 
 			System.out.println("  image count = " + images.size());
 			System.out.println("  image summary:");
@@ -118,12 +117,6 @@ public class Test
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-
-	}
-
-	private static void usage()
-	{
-
 	}
 
 }

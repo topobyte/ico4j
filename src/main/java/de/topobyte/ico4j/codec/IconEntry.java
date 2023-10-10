@@ -1,9 +1,9 @@
-package net.sf.image4j.codec.ico;
+package de.topobyte.ico4j.codec;
 
 import java.io.IOException;
 
-import net.sf.image4j.io.LittleEndianInputStream;
-import net.sf.image4j.io.LittleEndianOutputStream;
+import de.topobyte.bmp4j.io.LittleEndianInputStream;
+import de.topobyte.bmp4j.io.LittleEndianOutputStream;
 
 /**
  * Represents an <tt>IconEntry</tt> structure, which contains information about
@@ -13,6 +13,7 @@ import net.sf.image4j.io.LittleEndianOutputStream;
  */
 public class IconEntry
 {
+
 	/**
 	 * The width of the icon image in pixels. <tt>0</tt> specifies a width of
 	 * 256 pixels.
@@ -138,4 +139,5 @@ public class IconEntry
 		// FileOffset 4 byte FilePos, where InfoHeader starts
 		out.writeIntLE(iFileOffset);
 	}
+
 }

@@ -20,10 +20,10 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import net.sf.image4j.codec.bmp.BMPDecoder;
-import net.sf.image4j.codec.bmp.BMPEncoder;
-import net.sf.image4j.codec.ico.ICODecoder;
-import net.sf.image4j.codec.ico.ICOEncoder;
+import de.topobyte.bmp4j.codec.BMPDecoder;
+import de.topobyte.bmp4j.codec.BMPEncoder;
+import de.topobyte.ico4j.codec.ICODecoder;
+import de.topobyte.ico4j.codec.ICOEncoder;
 
 /**
  *
@@ -34,7 +34,6 @@ public class Test
 
 	public static void main(String[] args)
 	{
-
 		// input and output file names
 
 		if (args.length < 2) {
@@ -144,12 +143,6 @@ public class Test
 			} catch (IOException ex) {
 			}
 		}
-
-	}
-
-	private static void usage()
-	{
-
 	}
 
 }

@@ -25,6 +25,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
+    api 'de.topobyte:bmp4j:0.1.0'
 }
 
 java {

@@ -32,6 +32,7 @@ import de.topobyte.bmp4j.codec.InfoHeader;
 import de.topobyte.bmp4j.codec.InfoHeader3;
 import de.topobyte.bmp4j.io.LittleEndianOutputStream;
 import de.topobyte.ico4j.util.ConvertUtil;
+import de.topobyte.ico4j.util.ByteUtil;
 
 /**
  * Encodes images in ICO format.
@@ -386,6 +387,15 @@ public class ICOEncoder
 				// info header
 				InfoHeader ih = infoHeaders.get(i);
 				ih.write(out);
+
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				LittleEndianOutputStream out2 = new LittleEndianOutputStream(
+						baos);
+				ih.write(out2);
+				out2.flush();
+				byte[] bytes = baos.toByteArray();
+				ByteUtil.print(bytes);
+
 				// color map
 				if (ih.getBitCount() <= 8) {
 					IndexColorModel icm = (IndexColorModel) imgc
@@ -588,6 +598,13 @@ public class ICOEncoder
 		case 32:
 			Raster alpha = img.getAlphaRaster();
 			BMPEncoder.write32(raster, alpha, out);
+
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			LittleEndianOutputStream out2 = new LittleEndianOutputStream(baos);
+			BMPEncoder.write32(raster, alpha, out2);
+			out2.flush();
+			byte[] bytes = baos.toByteArray();
+			ByteUtil.print(bytes);
 			break;
 		}
 	}

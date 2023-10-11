@@ -47,8 +47,7 @@ public class ICOEncoder
 	}
 
 	/**
-	 * Encodes and writes a single image to file without color depth
-	 * conversion.
+	 * Encodes and writes a single image to file without color depth conversion.
 	 * 
 	 * @param image
 	 *            the source image to encode
@@ -108,7 +107,7 @@ public class ICOEncoder
 	public static void write(List<BufferedImage> images, File file)
 			throws IOException
 	{
-		write(images, null, file);
+		write(images, null, null, file);
 	}
 
 	/**
@@ -132,6 +131,26 @@ public class ICOEncoder
 	}
 
 	/**
+	 * Encodes and writes multiple images to file with the color depth
+	 * conversion using the specified values.
+	 * 
+	 * @param images
+	 *            the list of source images to encode
+	 * @param compress
+	 *            array containing the compression flag for the corresponding
+	 *            image at each index in the <tt>images</tt> list.
+	 * @param file
+	 *            the output file to which the encoded images will be written
+	 * @throws IOException
+	 *             if an error occurs
+	 */
+	public static void write(List<BufferedImage> images, boolean[] compress,
+			File file) throws IOException
+	{
+		write(images, compress, new FileOutputStream(file));
+	}
+
+	/**
 	 * Encodes and outputs a list of images in ICO format. The first image in
 	 * the list will be at index #0 in the ICO file, the second at index #1, and
 	 * so on.
@@ -142,10 +161,10 @@ public class ICOEncoder
 	 * @param bpp
 	 *            Array containing the color depth (bits per pixel) for encoding
 	 *            the corresponding image at each index in the <tt>images</tt>
-	 *            list. If the array is <tt>null</tt>, no color depth
-	 *            conversion will be performed. A color depth value of
-	 *            <tt>-1</tt> at a particular index indicates that no color
-	 *            depth conversion should be performed for that image.
+	 *            list. If the array is <tt>null</tt>, no color depth conversion
+	 *            will be performed. A color depth value of <tt>-1</tt> at a
+	 *            particular index indicates that no color depth conversion
+	 *            should be performed for that image.
 	 * @param compress
 	 *            Array containing the compression flag for the corresponding
 	 *            image at each index in the <tt>images</tt> list. If the array
@@ -172,8 +191,8 @@ public class ICOEncoder
 	 *            the source image to encode
 	 * @param bpp
 	 *            the color depth (bits per pixel) for the color depth
-	 *            conversion, or <tt>-1</tt> if no color depth conversion
-	 *            should be performed
+	 *            conversion, or <tt>-1</tt> if no color depth conversion should
+	 *            be performed
 	 * @param file
 	 *            the output file to which the encoded image will be written
 	 * @throws IOException
@@ -204,8 +223,8 @@ public class ICOEncoder
 	 *            The image to encode.
 	 * @param bpp
 	 *            Color depth (in bits per pixel) for the color depth
-	 *            conversion, or <tt>-1</tt> if no color depth conversion
-	 *            should be performed.
+	 *            conversion, or <tt>-1</tt> if no color depth conversion should
+	 *            be performed.
 	 * @param os
 	 *            The output to which the encoded image will be written.
 	 * @throws IOException
@@ -230,10 +249,10 @@ public class ICOEncoder
 	 * @param bpp
 	 *            Array containing the color depth (bits per pixel) for encoding
 	 *            the corresponding image at each index in the <tt>images</tt>
-	 *            list. If the array is <tt>null</tt>, no color depth
-	 *            conversion will be performed. A color depth value of
-	 *            <tt>-1</tt> at a particular index indicates that no color
-	 *            depth conversion should be performed for that image.
+	 *            list. If the array is <tt>null</tt>, no color depth conversion
+	 *            will be performed. A color depth value of <tt>-1</tt> at a
+	 *            particular index indicates that no color depth conversion
+	 *            should be performed for that image.
 	 * @param os
 	 *            The output to which the encoded images will be written.
 	 * @throws IOException
@@ -253,13 +272,39 @@ public class ICOEncoder
 	 * @param images
 	 *            List of images to encode, which will be output in the order
 	 *            supplied in the list.
+	 * @param compress
+	 *            Array containing the compression flag for the corresponding
+	 *            image at each index in the <tt>images</tt> list. If the array
+	 *            is <tt>null</tt>, no compression will be peformed. A value of
+	 *            <tt>true</tt> specifies that compression should be performed,
+	 *            while a value of <tt>false</tt> specifies that no compression
+	 *            should be performed.
+	 * @param os
+	 *            The output to which the encoded images will be written.
+	 * @throws IOException
+	 *             if an error occurred.
+	 */
+	public static void write(List<BufferedImage> images, boolean[] compress,
+			OutputStream os) throws IOException
+	{
+		write(images, null, compress, os);
+	}
+
+	/**
+	 * Encodes and outputs a list of images in ICO format. The first image in
+	 * the list will be at index #0 in the ICO file, the second at index #1, and
+	 * so on.
+	 * 
+	 * @param images
+	 *            List of images to encode, which will be output in the order
+	 *            supplied in the list.
 	 * @param bpp
 	 *            Array containing the color depth (bits per pixel) for encoding
 	 *            the corresponding image at each index in the <tt>images</tt>
-	 *            list. If the array is <tt>null</tt>, no color depth
-	 *            conversion will be performed. A color depth value of
-	 *            <tt>-1</tt> at a particular index indicates that no color
-	 *            depth conversion should be performed for that image.
+	 *            list. If the array is <tt>null</tt>, no color depth conversion
+	 *            will be performed. A color depth value of <tt>-1</tt> at a
+	 *            particular index indicates that no color depth conversion
+	 *            should be performed for that image.
 	 * @param compress
 	 *            Array containing the compression flag for the corresponding
 	 *            image at each index in the <tt>images</tt> list. If the array
